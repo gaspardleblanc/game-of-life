@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Board from './components/Board';
+import Controls from './components/Controls';
+import './styles.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const [darkMode, setDarkMode] = useState(true);
+
+    const toggleDarkMode = () => {
+        setDarkMode(!darkMode);
+    };
+
+    return (
+        <div className={darkMode ? 'dark' : 'light'}>
+            <h1>Conway's Game of Life</h1>
+            <Controls toggleDarkMode={toggleDarkMode} />
+            <Board />
+        </div>
+    );
+};
 
 export default App;
